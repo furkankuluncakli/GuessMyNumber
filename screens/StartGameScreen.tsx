@@ -4,7 +4,13 @@ import { StyleSheet, TextInput, View } from "react-native";
 function StartGameScreen() {
   return (
     <View style={styles.inputContainer}>
-      <TextInput style={styles.numberInput} maxLength={2} />
+      <TextInput style={styles.numberInput} maxLength={2}
+      keyboardType="number-pad"
+      autoCorrect={false}
+      autoCapitalize="none"
+
+      
+      />
       <PrimaryButton>Reset</PrimaryButton>
       <PrimaryButton>Confirm</PrimaryButton>
     </View>
