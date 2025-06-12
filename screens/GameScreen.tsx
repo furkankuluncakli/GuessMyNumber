@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Alert, StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 import Title from "../components/ui/Title"
 import NumberContainer from '@/components/game/NumberContainer';
 import PrimaryButton from '@/components/ui/PrimaryButton';
+import Card from '@/components/ui/Card';
+import InstructionText from '@/components/ui/InstructionText';
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -52,14 +56,22 @@ function GameScreen({userNumber, onGameOver}) {
         <NumberContainer>
           {currentGuess}
         </NumberContainer>
-        <View>
-            <Text>Higher or Lower?</Text>
-            <View>
-              <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>-</PrimaryButton>
-              <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>+</PrimaryButton>
+        <Card>
+            <InstructionText>Higher or Lower?</InstructionText>
+            <View style={styles.buttonsContainer}>
+              <View style={styles.buttonContainer}>
+                <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+                   <Ionicons name="remove" size={24} color="white" />
+                </PrimaryButton>
+              </View>
+              <View style={styles.buttonContainer}>
+                <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+                  <Ionicons name="add" size={24} color="white" />
+                </PrimaryButton>
+              </View>
             </View>
             
-        </View>
+        </Card>
         {/* <View>Log Rounds</View> */}
     </View>
   )
@@ -72,4 +84,11 @@ const styles = StyleSheet.create({
         flex:1,
         padding:24,
     },
+    buttonsContainer:{
+      flexDirection:"row",
+      marginTop:12
+    },
+    buttonContainer:{
+      flex:1
+    }
 })

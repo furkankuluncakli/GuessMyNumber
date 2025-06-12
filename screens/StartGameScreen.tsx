@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "../constants/Colors"
 import Title from "@/components/ui/Title";
+import Card from "@/components/ui/Card";
+import InstructionText from "@/components/ui/InstructionText";
 
 function StartGameScreen({onPickNumber}) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -34,8 +36,8 @@ function StartGameScreen({onPickNumber}) {
   return (
     <View style={styles.rootContainer}>
       <Title>Guess My Number</Title>
-      <View style={styles.inputContainer}>
-        <Text style={styles.instructionText}>Enter a Number</Text>
+      <Card>
+        <InstructionText>Enter a Number</InstructionText>
         <TextInput style={styles.numberInput} maxLength={2}
         keyboardType="number-pad"
         autoCorrect={false}
@@ -51,7 +53,7 @@ function StartGameScreen({onPickNumber}) {
             <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
           </View>
         </View>
-      </View>
+      </Card>
     </View>
   );
 }
@@ -63,20 +65,6 @@ const styles = StyleSheet.create({
     flex:1,
     marginTop:100,
     alignItems:"center"
-  },
-  inputContainer: {
-    marginTop: 36,
-    marginHorizontal: 24,
-    padding: 16,
-    borderRadius: 8,
-    elevation: 8,
-    backgroundColor: Colors.primary800,
-    justifyContent:"center",
-    alignItems:"center"
-  },
-  instructionText:{
-    color:Colors.accent500,
-    fontSize:24
   },
   numberInput: {
     height: 50,
